@@ -1,0 +1,82 @@
+@import 'tailwindcss';
+
+@theme inline {
+  --font-sans: 'Geist', 'Geist Fallback';
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+
+  /* Light mode colors (default) */
+  --color-background: #fafafa;
+  --color-foreground: #0a0a0a;
+  
+  --color-card: #ffffff;
+  --color-card-foreground: #0a0a0a;
+  
+  --color-primary: #6366f1;
+  --color-primary-foreground: #ffffff;
+  
+  --color-secondary: #f1f5f9;
+  --color-secondary-foreground: #0f172a;
+  
+  --color-muted: #f1f5f9;
+  --color-muted-foreground: #64748b;
+  
+  --color-accent: #8b5cf6;
+  --color-accent-foreground: #ffffff;
+  
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+  
+  --color-border: #e2e8f0;
+  --color-input: #e2e8f0;
+  --color-ring: #6366f1;
+  
+  --radius: 0.5rem;
+}
+
+/* Dark mode colors */
+:root.dark {
+  --color-background: #0a0a0a;
+  --color-foreground: #fafafa;
+  
+  --color-card: #171717;
+  --color-card-foreground: #fafafa;
+  
+  --color-primary: #818cf8;
+  --color-primary-foreground: #0a0a0a;
+  
+  --color-secondary: #1e293b;
+  --color-secondary-foreground: #f1f5f9;
+  
+  --color-muted: #1e293b;
+  --color-muted-foreground: #94a3b8;
+  
+  --color-accent: #a78bfa;
+  --color-accent-foreground: #0a0a0a;
+  
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #fafafa;
+  
+  --color-border: #334155;
+  --color-input: #334155;
+  --color-ring: #818cf8;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Hide scrollbars globally for Webkit browsers */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* Hide scrollbars for Firefox */
+* {
+  scrollbar-width: none;
+}

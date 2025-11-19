@@ -1,0 +1,97 @@
+# ----------------------------------------
+# Node & Package Managers
+# ----------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Optional: comment out if you want to commit your lockfile
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# ----------------------------------------
+# Build outputs
+# ----------------------------------------
+dist/
+build/
+out/
+.next/
+.vercel/
+
+# Turborepo build cache
+turbo/
+
+# ----------------------------------------
+# Env files
+# ----------------------------------------
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.env.*.local
+
+# ----------------------------------------
+# OS / Editor files
+# ----------------------------------------
+.DS_Store
+Thumbs.db
+
+# IDEA / VSCode / JetBrains
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# ----------------------------------------
+# Logs
+# ----------------------------------------
+logs/
+*.log
+log/
+
+# ----------------------------------------
+# Optional caches
+# ----------------------------------------
+.cache/
+*.cache
+.next/cache/
+.eslintcache
+.stylelintcache
+.parcel-cache
+
+# ----------------------------------------
+# TypeScript
+# ----------------------------------------
+*.tsbuildinfo
+
+# ----------------------------------------
+# Testing frameworks
+# ----------------------------------------
+coverage/
+nyc_output/
+jest.cache/
+jest-results/
+
+# ----------------------------------------
+# Storybook
+# ----------------------------------------
+storybook-static/
+.out/
+
+# ----------------------------------------
+# Misc
+# ----------------------------------------
+*.swp
+*.swo
+*.bak
+*.tmp
+*.temp
