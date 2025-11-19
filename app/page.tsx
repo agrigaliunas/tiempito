@@ -10,6 +10,7 @@ import { IvyLeeMethod } from '@/components/ivy-lee-method'
 import { EatThatFrog } from '@/components/eat-that-frog'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
+import { useTheme } from 'next-themes'
 
 const techniques = [
   {
@@ -65,28 +66,16 @@ const techniques = [
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [direction, setDirection] = useState(0)
-  const [theme, setTheme] = useState<'light' | 'dark'>('light')
   const [mounted, setMounted] = useState(false)
+  const { resolvedTheme, setTheme } = useTheme()
+  const activeTheme = resolvedTheme === 'dark' ? 'dark' : 'light'
 
   useEffect(() => {
     setMounted(true)
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-    const initialTheme = savedTheme || systemTheme
-    setTheme(initialTheme)
-    
-    // Force remove/add class to ensure state sync
-    document.documentElement.classList.remove('light', 'dark')
-    document.documentElement.classList.add(initialTheme)
   }, [])
 
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light'
-    setTheme(newTheme)
-    localStorage.setItem('theme', newTheme)
-    
-    document.documentElement.classList.remove('light', 'dark')
-    document.documentElement.classList.add(newTheme)
+    setTheme(activeTheme === 'light' ? 'dark' : 'light')
   }
 
   const goToPrevious = () => {
@@ -127,7 +116,7 @@ export default function Home() {
               onClick={toggleTheme}
               className="rounded-full hover:bg-muted"
             >
-              {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+              {activeTheme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
             </Button>
           </div>
         </div>

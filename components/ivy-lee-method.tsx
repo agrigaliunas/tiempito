@@ -108,22 +108,23 @@ export function IvyLeeMethod() {
   return (
     <div className="max-w-2xl mx-auto h-full flex flex-col">
       {/* Paper Card Effect */}
-      <div className="bg-white dark:bg-[#1c1c1c] border shadow-sm rounded-xl p-8 flex-1 flex flex-col relative overflow-hidden">
+      <div className="bg-gradient-to-b from-white via-white to-slate-50 dark:from-[#111111] dark:via-[#161616] dark:to-[#0b0b0b] border border-slate-200 dark:border-slate-800 shadow-xl rounded-2xl p-8 flex-1 flex flex-col relative overflow-hidden">
         {/* Lined Paper Background */}
-        <div className="absolute inset-0 pointer-events-none opacity-10"
+        <div
+          className="absolute inset-0 pointer-events-none opacity-10"
           style={{
             backgroundImage: 'linear-gradient(#999 1px, transparent 1px)',
             backgroundSize: '100% 3rem',
-            marginTop: '4rem'
+            marginTop: '4rem',
           }}
         />
 
         {/* Header */}
         <div className="relative z-10 mb-8 text-center">
-          <h3 className="font-serif text-2xl italic text-muted-foreground">
+          <h3 className="font-serif text-2xl italic text-slate-700 dark:text-slate-200">
             Mis 6 Prioridades para Hoy
           </h3>
-          <p className="text-sm text-muted-foreground mt-2">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
             {new Date().toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' })}
           </p>
         </div>
@@ -131,9 +132,9 @@ export function IvyLeeMethod() {
         {/* Import Yesterday's Tasks */}
         {incompleteYesterdayTasks.length > 0 && tasks.length < 6 && (
           <div className="relative z-10 mb-6">
-            <Button 
-              variant="outline" 
-              className="w-full border-dashed border-2 hover:border-primary hover:text-primary transition-colors"
+            <Button
+              variant="outline"
+              className="w-full border-dashed border-2 border-slate-300 dark:border-slate-600 hover:border-primary hover:text-primary transition-colors"
               onClick={importYesterdayTasks}
             >
               <ArrowDownToLine className="w-4 h-4 mr-2" />
@@ -152,28 +153,28 @@ export function IvyLeeMethod() {
               onDragOver={handleDragOver}
               onDrop={(e) => handleDrop(e, index)}
               className={cn(
-                "group flex items-center gap-4 p-3 rounded-lg transition-all hover:bg-black/5 dark:hover:bg-white/5 cursor-move",
-                task.completed && "opacity-50"
+                'group flex items-center gap-4 p-3 rounded-xl transition-all bg-white/80 dark:bg-slate-900/30 shadow-sm hover:shadow-md hover:bg-slate-100/80 dark:hover:bg-slate-800/50 cursor-move',
+                task.completed && 'opacity-60'
               )}
             >
               <div className="font-serif text-2xl font-bold text-muted-foreground/50 w-8 text-center">
                 {index + 1}
               </div>
-              
+
               <div className="flex-1 flex items-center gap-3">
                 <button
                   onClick={() => toggleTask(task.id)}
                   className={cn(
                     "w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors",
-                    task.completed 
-                      ? "bg-primary border-primary text-primary-foreground" 
+                    task.completed
+                      ? "bg-primary border-primary text-primary-foreground"
                       : "border-muted-foreground/30 hover:border-primary"
                   )}
                 >
                   {task.completed && <Check className="w-4 h-4" />}
                 </button>
                 <span className={cn(
-                  "text-lg font-medium transition-all",
+                  "text-lg font-medium transition-all text-slate-800 dark:text-slate-100",
                   task.completed && "line-through text-muted-foreground"
                 )}>
                   {task.title}
@@ -194,7 +195,7 @@ export function IvyLeeMethod() {
 
           {/* Add New Task Input */}
           {tasks.length < 6 ? (
-            <div className="flex items-center gap-4 p-3 opacity-60 hover:opacity-100 transition-opacity">
+            <div className="flex items-center gap-4 p-3 opacity-80 hover:opacity-100 transition-opacity bg-white/60 dark:bg-transparent rounded-xl">
               <div className="font-serif text-2xl font-bold text-muted-foreground/30 w-8 text-center">
                 {tasks.length + 1}
               </div>
@@ -204,10 +205,10 @@ export function IvyLeeMethod() {
                   onChange={(e) => setNewTask(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleAddTask()}
                   placeholder="Escribe una nueva tarea..."
-                  className="border-0 border-b-2 border-muted rounded-none px-0 focus-visible:ring-0 focus-visible:border-primary bg-transparent"
+                  className="border-0 border-b-2 border-slate-300 dark:border-slate-600 rounded-none px-0 focus-visible:ring-0 focus-visible:border-primary bg-transparent text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500"
                 />
-                <Button 
-                  size="icon" 
+                <Button
+                  size="icon"
                   variant="ghost" 
                   onClick={handleAddTask}
                   disabled={!newTask.trim()}
@@ -217,7 +218,7 @@ export function IvyLeeMethod() {
               </div>
             </div>
           ) : (
-            <div className="text-center py-8 text-muted-foreground bg-muted/20 rounded-lg border border-dashed">
+            <div className="text-center py-8 text-slate-500 dark:text-slate-300 bg-slate-100/60 dark:bg-slate-900/30 rounded-xl border border-dashed border-slate-300 dark:border-slate-700">
               Has alcanzado el límite de 6 tareas diarias del método Ivy Lee
             </div>
           )}

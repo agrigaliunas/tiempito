@@ -32,33 +32,48 @@ interface Task {
   createdAt: number
 }
 
-const QUADRANTS: { id: QuadrantId; title: string; subtitle: string; color: string; icon: any }[] = [
+const QUADRANTS: {
+  id: QuadrantId
+  title: string
+  subtitle: string
+  color: string
+  icon: any
+  accent: string
+}[] = [
   {
     id: 'do',
     title: 'Hacer Ahora',
     subtitle: 'Urgente e Importante',
-    color: 'bg-red-200 text-red-900 dark:bg-red-900/20 dark:text-red-400 border-red-300 dark:border-red-800',
+    color:
+      'bg-white/95 text-slate-900 border-2 border-red-100 shadow-[0_25px_65px_-35px_rgba(239,68,68,0.8)] dark:bg-red-950/30 dark:text-red-100 dark:border-red-900 dark:shadow-red-950/50',
+    accent: 'text-red-500 dark:text-red-200',
     icon: AlertCircle,
   },
   {
     id: 'schedule',
     title: 'Planificar',
     subtitle: 'No Urgente pero Importante',
-    color: 'bg-blue-200 text-blue-900 dark:bg-blue-900/20 dark:text-blue-400 border-blue-300 dark:border-blue-800',
+    color:
+      'bg-white/95 text-slate-900 border-2 border-blue-100 shadow-[0_25px_65px_-35px_rgba(59,130,246,0.55)] dark:bg-blue-950/30 dark:text-blue-100 dark:border-blue-900 dark:shadow-blue-950/40',
+    accent: 'text-blue-500 dark:text-blue-200',
     icon: Calendar,
   },
   {
     id: 'delegate',
     title: 'Delegar',
     subtitle: 'Urgente pero No Importante',
-    color: 'bg-amber-200 text-amber-900 dark:bg-amber-900/20 dark:text-amber-400 border-amber-300 dark:border-amber-800',
+    color:
+      'bg-white/95 text-slate-900 border-2 border-amber-100 shadow-[0_25px_65px_-35px_rgba(245,158,11,0.6)] dark:bg-amber-950/30 dark:text-amber-100 dark:border-amber-900 dark:shadow-amber-950/40',
+    accent: 'text-amber-500 dark:text-amber-200',
     icon: ArrowRight,
   },
   {
     id: 'delete',
     title: 'Eliminar',
     subtitle: 'Ni Urgente ni Importante',
-    color: 'bg-slate-200 text-slate-900 dark:bg-slate-800/50 dark:text-slate-400 border-slate-300 dark:border-slate-700',
+    color:
+      'bg-white/95 text-slate-900 border-2 border-slate-200 shadow-[0_25px_65px_-35px_rgba(100,116,139,0.55)] dark:bg-slate-900/40 dark:text-slate-100 dark:border-slate-700 dark:shadow-slate-900/40',
+    accent: 'text-slate-500 dark:text-slate-200',
     icon: XCircle,
   },
 ]
@@ -146,7 +161,7 @@ export function EisenhowerMatrix() {
           <div
             key={quadrant.id}
             className={cn(
-              'flex flex-col rounded-xl border-2 p-4 transition-colors',
+              'flex flex-col rounded-2xl p-5 transition-colors backdrop-blur-sm',
               quadrant.color
             )}
             onDragOver={handleDragOver}
@@ -154,10 +169,12 @@ export function EisenhowerMatrix() {
           >
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <quadrant.icon className="w-5 h-5" />
+                <quadrant.icon className={cn('w-5 h-5', quadrant.accent)} />
                 <div>
-                  <h3 className="font-bold text-sm uppercase tracking-wider">{quadrant.title}</h3>
-                  <p className="text-xs opacity-80">{quadrant.subtitle}</p>
+                  <h3 className="font-bold text-base tracking-wide text-slate-900 dark:text-white">
+                    {quadrant.title}
+                  </h3>
+                  <p className="text-xs text-slate-600 dark:text-slate-300">{quadrant.subtitle}</p>
                 </div>
               </div>
               <Button
@@ -178,13 +195,15 @@ export function EisenhowerMatrix() {
                     key={task.id}
                     draggable
                     onDragStart={(e) => handleDragStart(e, task.id)}
-                    className="group bg-white dark:bg-black/20 p-3 rounded-lg shadow-sm border border-transparent hover:border-black/10 dark:hover:border-white/10 cursor-grab active:cursor-grabbing transition-all"
+                    className="group bg-white/95 dark:bg-slate-900/40 p-3 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-md cursor-grab active:cursor-grabbing transition-all"
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div className="flex-1 min-w-0">
-                        <h4 className="font-medium text-sm truncate">{task.title}</h4>
+                        <h4 className="font-medium text-sm text-slate-900 dark:text-white truncate">
+                          {task.title}
+                        </h4>
                         {task.description && (
-                          <p className="text-xs text-muted-foreground line-clamp-2 mt-1">
+                          <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-2 mt-1">
                             {task.description}
                           </p>
                         )}
