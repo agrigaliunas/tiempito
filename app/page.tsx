@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { ChevronLeft, ChevronRight, Moon, Sun } from 'lucide-react'
+import { useState } from 'react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { PomodoroTimer } from '@/components/pomodoro-timer'
 import { EisenhowerMatrix } from '@/components/eisenhower-matrix'
 import { Timeboxing } from '@/components/timeboxing'
@@ -9,7 +9,6 @@ import { ABCMethod } from '@/components/abc-method'
 import { IvyLeeMethod } from '@/components/ivy-lee-method'
 import { EatThatFrog } from '@/components/eat-that-frog'
 import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
 
 const techniques = [
   {
@@ -65,29 +64,6 @@ const techniques = [
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [direction, setDirection] = useState(0)
-  const [theme, setTheme] = useState<'light' | 'dark'>('light')
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-    const initialTheme = savedTheme || systemTheme
-    setTheme(initialTheme)
-    
-    // Force remove/add class to ensure state sync
-    document.documentElement.classList.remove('light', 'dark')
-    document.documentElement.classList.add(initialTheme)
-  }, [])
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light'
-    setTheme(newTheme)
-    localStorage.setItem('theme', newTheme)
-    
-    document.documentElement.classList.remove('light', 'dark')
-    document.documentElement.classList.add(newTheme)
-  }
 
   const goToPrevious = () => {
     setDirection(-1)
@@ -97,10 +73,6 @@ export default function Home() {
   const goToNext = () => {
     setDirection(1)
     setCurrentIndex((prev) => (prev === techniques.length - 1 ? 0 : prev + 1))
-  }
-
-  if (!mounted) {
-    return null
   }
 
   return (
@@ -121,14 +93,6 @@ export default function Home() {
             <div className="text-sm text-muted-foreground hidden md:block">
               Tu suite de productividad personal
             </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleTheme}
-              className="rounded-full hover:bg-muted"
-            >
-              {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
-            </Button>
           </div>
         </div>
       </header>
