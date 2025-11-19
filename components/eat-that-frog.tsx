@@ -93,7 +93,7 @@ export function EatThatFrog() {
       </div>
 
       {/* Main Card */}
-      <div className="w-full bg-card border-2 border-green-100 dark:border-green-900 rounded-3xl p-8 shadow-xl relative overflow-hidden">
+      <div className="w-full bg-card border-2 border-green-100 dark:border-green-900 rounded-3xl p-8 shadow-xl relative overflow-auto">
         {/* Decorative Background */}
         <div className="absolute top-0 right-0 -mt-8 -mr-8 w-32 h-32 bg-green-100 dark:bg-green-900/20 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 -mb-8 -ml-8 w-32 h-32 bg-green-100 dark:bg-green-900/20 rounded-full blur-3xl" />

@@ -93,9 +93,6 @@ export default function Home() {
             <div className="text-sm text-muted-foreground hidden md:block">
               Tu suite de productividad personal
             </div>
-            <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-              Modo claro
-            </div>
           </div>
         </div>
       </header>

@@ -45,8 +45,8 @@ const QUADRANTS: {
     title: 'Hacer Ahora',
     subtitle: 'Urgente e Importante',
     color:
-      'bg-white/95 text-slate-900 border-2 border-red-100 shadow-[0_25px_65px_-35px_rgba(239,68,68,0.8)] dark:bg-red-950/30 dark:text-red-100 dark:border-red-900 dark:shadow-red-950/50',
-    accent: 'text-red-500 dark:text-red-200',
+      'bg-white/95 text-slate-900 border-2 border-green-100 shadow-[0_25px_65px_-35px_rgba(239,68,68,0.8)] dark:bg-green-950/30 dark:border-green-900 dark:shadow-green-950/50',
+    accent: 'text-green-500 dark:text-green-200',
     icon: AlertCircle,
   },
   {
@@ -54,8 +54,8 @@ const QUADRANTS: {
     title: 'Planificar',
     subtitle: 'No Urgente pero Importante',
     color:
-      'bg-white/95 text-slate-900 border-2 border-blue-100 shadow-[0_25px_65px_-35px_rgba(59,130,246,0.55)] dark:bg-blue-950/30 dark:text-blue-100 dark:border-blue-900 dark:shadow-blue-950/40',
-    accent: 'text-blue-500 dark:text-blue-200',
+      'bg-white/95 text-slate-900 border-2 border-orange-100 shadow-[0_25px_65px_-35px_rgba(59,130,246,0.55)] dark:bg-orange-950/30 dark:border-orange-900 dark:shadow-orange-950/40',
+    accent: 'text-orange-500 dark:text-orange-200',
     icon: Calendar,
   },
   {
@@ -63,8 +63,8 @@ const QUADRANTS: {
     title: 'Delegar',
     subtitle: 'Urgente pero No Importante',
     color:
-      'bg-white/95 text-slate-900 border-2 border-amber-100 shadow-[0_25px_65px_-35px_rgba(245,158,11,0.6)] dark:bg-amber-950/30 dark:text-amber-100 dark:border-amber-900 dark:shadow-amber-950/40',
-    accent: 'text-amber-500 dark:text-amber-200',
+      'bg-white/95 text-blue-900 border-2 border-blue-100 shadow-[0_25px_65px_-35px_rgba(245,158,11,0.6)] dark:bg-blue-950/30 dark:border-blue-900 dark:shadow-blue-950/40',
+    accent: 'text-blue-500 dark:text-blue-200',
     icon: ArrowRight,
   },
   {
@@ -72,8 +72,8 @@ const QUADRANTS: {
     title: 'Eliminar',
     subtitle: 'Ni Urgente ni Importante',
     color:
-      'bg-white/95 text-slate-900 border-2 border-slate-200 shadow-[0_25px_65px_-35px_rgba(100,116,139,0.55)] dark:bg-slate-900/40 dark:text-slate-100 dark:border-slate-700 dark:shadow-slate-900/40',
-    accent: 'text-slate-500 dark:text-slate-200',
+      'bg-white/95 text-red-900 border-2 border-red-200 shadow-[0_25px_65px_-35px_rgba(100,116,139,0.55)] dark:bg-red-900/40 dark:border-red-700 dark:shadow-red-900/40',
+    accent: 'text-red-500 dark:text-red-200',
     icon: XCircle,
   },
 ]
@@ -171,10 +171,10 @@ export function EisenhowerMatrix() {
               <div className="flex items-center gap-2">
                 <quadrant.icon className={cn('w-5 h-5', quadrant.accent)} />
                 <div>
-                  <h3 className="font-bold text-base tracking-wide text-slate-900 dark:text-white">
+                  <h3 className="font-bold text-base tracking-wide text-slate-900 ">
                     {quadrant.title}
                   </h3>
-                  <p className="text-xs text-slate-600 dark:text-slate-300">{quadrant.subtitle}</p>
+                  <p className="text-xs text-slate-600 ">{quadrant.subtitle}</p>
                 </div>
               </div>
               <Button
